@@ -1,7 +1,4 @@
 # S_84_Top-Silly-Moments-in-Gully-Cricket
-
-
-
 ---
 
 ### **Project Title:**
@@ -41,6 +38,6 @@ Top Silly Moments in Gully Cricket
 
 ---
 
-This project will help me gain practical experience with modern web development tools while providing an engaging platform for users to share and interact with the funniest moments from gully cricket. By completing this project, I will demonstrate my skills in full-stack development, API design, database management, and user authentication.
+This project will help me gain practical experience with modern web development tools while providing an engaging platform for users to share and interact with the funniest moments from gully cricket. By completing this project, I will explain my skills in full-stack development, API design, database management, and user authentication.
 
 ---
