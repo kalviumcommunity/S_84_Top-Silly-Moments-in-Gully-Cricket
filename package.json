@@ -1,7 +1,7 @@
 {
   "name": "s_84_top-silly-moments-in-gully-cricket",
   "version": "1.0.0",
-  "description": "---",
+  "description": "A collection of memorable and funny moments from gully cricket matches",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
