@@ -9,5 +9,5 @@ app.get('/ping' , (req , res) => {
 })
 
 app.listen(PORT , () => {
-    console.log(`Server is running at : http://localhost:${PORT}/ping`)
+    console.log(`Server is running at : http://localhost:${PORT}`)
 })
