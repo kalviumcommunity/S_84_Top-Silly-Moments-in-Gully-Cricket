@@ -13,7 +13,10 @@ app.use(express.json());
 mongoose
   .connect(process.env.MONGO_URI, {})
   .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("MongoDB Connection Error:", err));
+  .catch((err) => {
+    console.error("MongoDB Connection Error:", err);
+    process.exit(1);
+  });
 
 // Home Router with database connection status
 app.get("/", (req, res) => {
