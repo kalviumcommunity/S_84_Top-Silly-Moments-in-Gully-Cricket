@@ -1,0 +1,19 @@
+meta {
+  name: Post Moment
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:7856/api/moment
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title":"Silly Over" ,
+    "description" : "A crazy over of 9 wides and 5 no balls" ,
+    "submittedBy": "Deepankar"
+  }
+}
