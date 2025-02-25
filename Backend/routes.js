@@ -45,7 +45,7 @@ router.put('/moment/:id', async (req, res, next) => {
       .status(200)
       .json({
         success: true,
-        messsage: "Moment updated successfully",
+        message: "Moment updated successfully",
         updateMoment,
       });
   } catch (error) {
