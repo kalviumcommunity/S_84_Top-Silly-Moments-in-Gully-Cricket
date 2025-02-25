@@ -1,0 +1,19 @@
+meta {
+  name: UPDATE Momenrs
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:7856/api/moment/67bd491f845716afd95b55cc
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Silly RunOut",
+        "description": "A crazy runout due to careless running of batsman and presence of mind by Akshit",
+        "submittedBy": "Abhinav"
+  }
+}
