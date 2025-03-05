@@ -1,27 +1,4 @@
-/* .landingpage {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: wheat;
-  padding: 20px;
-  border-radius: 8px;
-}
 
-body {
-  background-color: greenyellow;
-}
-
-.landingpage h1 {
-  color: #ff6347; /* Tomato color for a fun vibe */
-/* font-size: 3em;
-  margin-bottom: 20px;
-}
-
-.landingpage h2 {
-  color: #333;
-  font-size: 1.2em;
-}  */
-
-/* src/App.css */
 * {
   margin: 0;
   padding: 0;
@@ -30,32 +7,32 @@ body {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: grey; /* Light blue background for the body */
+  background-color: grey; 
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  min-height: 100vh; /* Make sure it takes the full height of the viewport */
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
   margin: 0;
 }
 
 .landingpage {
   text-align: center;
-  background-color: brown; /* White background for the content box */
+  background-color: brown; 
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for floating effect */
-  width: 80%; /* Control the width of the container */
-  max-width: 600px; /* Limit the width to make it look good on large screens */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  width: 80%; 
+  max-width: 600px; 
 }
 
 .landingpage h1 {
-  color: #ff6347; /* Tomato color for a fun vibe */
+  color: #ff6347; 
   font-size: 3em;
   margin-bottom: 20px;
 }
 
 .landingpage h2 {
-  color: greenyellow; /* Dark gray for better readability */
+  color: greenyellow; 
   font-size: 1.2em;
   line-height: 1.6;
 }
