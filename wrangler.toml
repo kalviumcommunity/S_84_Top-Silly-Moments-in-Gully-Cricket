@@ -1,8 +1,0 @@
-name = "top-silly-moments-in-gully-cricket"
-type = "jsx"  # Change to 'webpack' or 'modules' if needed
-account_id = "karankarandevgan@gmail.com"
-workers_dev = true  # Deploys to a *.workers.dev subdomain
-route = ""  # Add this if using a custom domain
-zone_id = ""  # Required if using a custom domain
-
-
