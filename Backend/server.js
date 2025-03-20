@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const routes = require('./routes');
+const cors = require("cors");
 dotenv.config();
 
 const app = express();
 const PORT = 7856;
 // middlewares
 app.use(express.json());
-
+app.use(cors());
 // API routes endpoint
 app.use('/api' , routes);
 //  Connection with MongoDB
