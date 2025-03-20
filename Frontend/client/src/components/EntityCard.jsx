@@ -1,12 +1,10 @@
 import React from "react";
 
-const EntityCard = ({ moment }) => {
+const EntityCard = ({ title, description }) => {
   return (
-    <div id="moment-card">
-      <h2 className="moment-title">{moment.title}</h2>
-      <p className="moment-desc">{moment.description}</p>
-      <img src={moment.image} alt={moment.title} className="moment-image" />
-      <p className="location"> Location: {moment.location}</p>
+    <div className="entity-card">
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   );
 };
@@ -28,4 +26,4 @@ const EntityComponent = () => {
   );
 };
 
-export default EntityComponent;
+export default { EntityComponent, EntityCard };
