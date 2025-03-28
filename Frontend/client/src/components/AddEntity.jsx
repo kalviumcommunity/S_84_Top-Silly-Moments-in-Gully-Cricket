@@ -7,7 +7,6 @@ const AddEntity = () => {
     description: "",
     location: "",
     submittedBy: "",
-    location: "",
   });
 
   const handleChange = (e) => {
