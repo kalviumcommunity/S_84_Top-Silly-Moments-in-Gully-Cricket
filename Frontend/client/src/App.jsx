@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import EntityCard from "./components/EntityCard";
-import moment from "moment";
+import AddEntity from "./components/AddEntity";
+ import moment from "moment";
 
 const App = () => {
   const [moments, setMoments] = useState([]);
@@ -18,13 +19,18 @@ const App = () => {
       })
       .catch((err) => console.error("Error Fetching moments: ", err));
   }, []);
+
+  const handleAddEntity = (newEntity) => {
+    const momentToAdd = { ...newEntity, id: Date.now() };
+    setMoments([...moments, momentToAdd]);
+  };
   return (
     <div className="">
       <section id="home-section">
         {/* title */}
         {/* subtitle */}
-        <h1 style = {{color: 'wheat'}}> Top Silly Moments in Gully Cricket</h1>
-        <h2  style = {{color: "grey"}}className="sub-title">
+        <h1 style={{ color: "wheat" }}> Top Silly Moments in Gully Cricket</h1>
+        <h2 style={{ color: "grey" }} className="sub-title">
           Welcome to the most hilarious and entertaining moments from the
           streets of Gully cricket!
         </h2>
@@ -32,7 +38,7 @@ const App = () => {
 
       <section id="moments-section">
         {/* heading (top silly moments) */}
-        <h2 style = {{color: 'pink'}}>Watch, laugh and relive!</h2>
+        <h2 style={{ color: "pink" }}>Watch, laugh and relive!</h2>
         <div id="cards">
           {moments &&
             moments.map((moment) => (
@@ -44,8 +50,8 @@ const App = () => {
             ))}
         </div>
       </section>
-
-      <h2 style = {{color: "wheat"}}>Contact: karan.devgan@example.com</h2>
+            <AddEntity/>
+      <h2 style={{ color: "wheat" }}>Contact: karan.devgan@example.com</h2>
     </div>
   );
 };

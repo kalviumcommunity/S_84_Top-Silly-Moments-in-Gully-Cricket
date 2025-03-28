@@ -10,4 +10,4 @@ const EntityCard = ({ title, description }) => {
   );
 };
 
-export default EntityCard
+export default EntityCard;
