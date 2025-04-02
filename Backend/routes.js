@@ -33,6 +33,8 @@ router.get("/moments", async (req, res, next) => {
 //Updating a moment by its id
 router.put('/moments/:id', async (req, res, next) => {
   try {
+    console.log("Incoming ID: " , req.params.id);
+    console.log("Update Data: " , req.body);
     const updateMoment = await Moment.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -40,7 +42,9 @@ router.put('/moments/:id', async (req, res, next) => {
     );
     if (!updateMoment)
          return res.status(404).json({ success: false, message: "Moment not found" });
-return 
+
+   console.log("Updated Moment: " , updateMoment);
+    return 
     res
       .status(200)
       .json({
@@ -57,7 +61,10 @@ return
 router.delete("/moments/:id", async (req, res, next) => {
   try {
     const deleteMoment = await Moment.findByIdAndDelete(req.params.id);
+    console.log("Deleting Moment with ID:", req.params.id);
+
     if (!deleteMoment)  return res.status(404).json({ message: "Moment not found" });
+    
     res
       .status(200)
       .json({ success: true, message: "Moment deleted successfully" });
