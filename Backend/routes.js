@@ -41,7 +41,7 @@ router.put('/moments/:id', async (req, res, next) => {
       { new: true }
     );
     if (!updateMoment)
-         return res.status(404).json({ success: false, message: "Moment not found" });
+          res.status(404).json({ success: false, message: "Moment not found" });
 
    console.log("Updated Moment: " , updateMoment);
     return 
