@@ -23,7 +23,7 @@ const EntityCard = ({ moment , handleDelete }) => {
         >
           Delete
         </button>
-        console.log("Props in EntityCard: ", {(moment, handleDelete)});
+        {console.log("Props in EntityCard: ", {moment, handleDelete});}
       </div>
     </div>
   );

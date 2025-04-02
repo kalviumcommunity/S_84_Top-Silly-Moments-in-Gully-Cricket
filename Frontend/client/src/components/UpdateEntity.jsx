@@ -19,7 +19,9 @@ const UpdateEntity = ({ moments, setMoments }) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Data being updated: " , momentData);
+    {
+      console.log("Data being updated: ", momentData);
+    }
     axios
       .put(
         `https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments/${id}`,
