@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Moment = require("./models/moment");
+const ValidateMoment = require("./validator/momentsValidator");
 
+router.use(express.json());
 // Adding a new moment
-router.post("/moments", async (req, res, next) => {
+router.post("/moments", ValidateMoment, async (req, res) => {
   try {
     const newMoment = new Moment(req.body);
     await newMoment.save();
@@ -11,7 +13,7 @@ router.post("/moments", async (req, res, next) => {
       .status(201)
       .json({ success: true, message: "Moment added successfully" });
   } catch (error) {
-    next(error);
+    res.status(400).json({ error: error.message });
   }
 });
 
