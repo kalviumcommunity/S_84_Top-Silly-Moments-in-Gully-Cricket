@@ -7,7 +7,7 @@ const EntityCard = ({ moment , handleDelete }) => {
     <div className="entity-card">
       console.log("Moment Data: " , moment);
       <img
-        src="https://via.placeholder.com/150" 
+        src="https://via.placeholder.com/150"
         alt={`${moment.title} image`}
         className="entity-image"
       />
@@ -23,7 +23,6 @@ const EntityCard = ({ moment , handleDelete }) => {
         >
           Delete
         </button>
-        {console.log("Props in EntityCard: ", {moment, handleDelete})}
       </div>
     </div>
   );
