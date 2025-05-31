@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const routes = require('./routes');
+const authRoutes = require("./authRoutes");
 const cors = require("cors");
 
 dotenv.config();
@@ -10,9 +11,17 @@ const app = express();
 const PORT = 7856;
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 // API routes endpoint
-app.use('/api' , routes);
+app.use("/api", routes);
+
+app.use("/api/auth", authRoutes);
 //  Connection with MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {})
