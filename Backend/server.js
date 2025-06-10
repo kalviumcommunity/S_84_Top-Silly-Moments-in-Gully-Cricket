@@ -5,12 +5,16 @@ const routes = require('./routes');
 const authRoutes = require("./authRoutes");
 const cors = require("cors");
 
+const cookieParser = require("cookie-parser");
+
 dotenv.config();
 
 const app = express();
 const PORT = 7856;
 // middlewares
 app.use(express.json());
+app.use(cookieParser());
+
 app.use(
   cors({
     origin: "http://localhost:5173",

@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
+const { findLastKey } = require("lodash");
 
 exports.signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -23,15 +24,26 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    res.cookie("username", username, { httpOnly: true, secure: false });
+    // Generating jwt after verification done
+    const token = jwt.sign(
+      { userId: user._id, username },
+      process.env.JWT_SECRET,
+      { expiresIn: "2h" }
+    );
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: findLastKey,
+      sameSite: "1ax",
+      maxAge: 60 * 60 * 1000, // 1 hour
+    });
+
     res.status(200).json({ message: "Login successful" });
   } catch (err) {
-    console.error(err);
     res.status(500).json({ message: "Error logging in" });
   }
 };
 
 exports.logout = (req, res) => {
-  res.clearCookie("username");
+  res.clearCookie("token", { path: "/" });
   res.status(200).json({ message: "Logout successful" });
 };
