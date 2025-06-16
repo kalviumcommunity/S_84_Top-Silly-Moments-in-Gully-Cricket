@@ -1,92 +1,18 @@
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import UpdateEntity from "./components/UpdateEntity"; // Create this component
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import "./App.css";
-// import EntityCard from "./components/EntityCard";
-// import AddEntity from "./components/AddEntity";
 
-// import LoginPage from "./pages/LoginPage";
-// import SignupPage from "./pages/SignupPage";
-// const App = () => {
-//   const [moments, setMoments] = useState([]);
-
-//   useEffect(() => {
-//     axios
-//       .get(
-//         "https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments"
-//       )
-//       .then((response) => {
-//         console.log("API Response Moments: ", response.data.moments);
-//         setMoments(response.data.moments);
-//       })
-//       .catch((err) => console.error("Error Fetching moments:", err));
-//   }, []);
-
-//   const handleDelete = (id) => {
-//     if (window.confirm("Are you sure you want to delete this moment?"))
-//       axios
-//         .delete(
-//           `https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments/${id}`
-//         )
-//         .then(() => {
-//           setMoments((prevMoments) =>
-//             prevMoments.filter((moment) => moment._id !== id)
-//           );
-//           console.log("Moment deleted successfully");
-//         })
-//         .catch((err) => console.error("Error deleting the moment: ", err));
-//   };
-
-//   return (
-//     <Router>
-//       <Routes>
-//         {/* Home page with moments list */}
-//         <Route path="/login" element={<LoginPage />} />
-//         <Route path="/signup" element={<SignupPage />} />
-
-//         <Route
-//           path="/"
-//           element={
-//             <div>
-//               <h1 style={{ color: "wheat" }}>
-//                 Top Silly Moments in Gully Cricket
-//               </h1>
-//               <div id="cards">
-//                 {moments.map((moment) => (
-//                   <EntityCard
-//                     key={moment._id}
-//                     moment={moment}
-//                     handleDelete={handleDelete}
-//                   />
-//                 ))}
-//               </div>
-//               <AddEntity />
-//             </div>
-//           }
-//         />
-
-//         {/* Update Entity page */}
-//         <Route
-//           path="/update/:id"
-//           element={<UpdateEntity moments={moments} setMoments={setMoments} />}
-//         />
-//       </Routes>
-//     </Router>
-//   );
-// };
-
-// export default App;
-
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import UpdateEntity from "./components/UpdateEntity";
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+
+// Components
 import EntityCard from "./components/EntityCard";
 import AddEntity from "./components/AddEntity";
-import LoginPage from "./pages/LoginPage"; // 👈 NEW
-import SignupPage from "./pages/SignupPage"; // 👈 NEW
+import UpdateEntity from "./components/UpdateEntity";
+
+// Pages
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import UserMomentsPage from "./pages/UserMomentsPage"; // 👈 Newly Added Page
 
 const App = () => {
   const [moments, setMoments] = useState([]);
@@ -94,7 +20,10 @@ const App = () => {
   useEffect(() => {
     axios
       .get(
-        "https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments"
+        "https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments",
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         console.log("API Response Moments: ", response.data.moments);
@@ -104,10 +33,11 @@ const App = () => {
   }, []);
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this moment?"))
+    if (window.confirm("Are you sure you want to delete this moment?")) {
       axios
         .delete(
-          `https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments/${id}`
+          `https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments/${id}`,
+          { withCredentials: true }
         )
         .then(() => {
           setMoments((prevMoments) =>
@@ -116,12 +46,13 @@ const App = () => {
           console.log("Moment deleted successfully");
         })
         .catch((err) => console.error("Error deleting the moment: ", err));
+    }
   };
 
   return (
     <Router>
       <Routes>
-        {/* Home page with moments list */}
+        {/* 🏠 Home Page */}
         <Route
           path="/"
           element={
@@ -130,7 +61,7 @@ const App = () => {
                 Top Silly Moments in Gully Cricket
               </h1>
 
-              {/* 🚀 Login/Signup Buttons */}
+              {/* 🔐 Auth Buttons */}
               <div style={{ marginBottom: "20px" }}>
                 <Link to="/login">
                   <button>Login</button>
@@ -138,8 +69,12 @@ const App = () => {
                 <Link to="/signup" style={{ marginLeft: "10px" }}>
                   <button>Signup</button>
                 </Link>
+                <Link to="/user-moments" style={{ marginLeft: "10px" }}>
+                  <button>View Moments by User</button>
+                </Link>
               </div>
 
+              {/* 🎞️ Moments List */}
               <div id="cards">
                 {moments.map((moment) => (
                   <EntityCard
@@ -155,15 +90,18 @@ const App = () => {
           }
         />
 
-        {/* Update Entity page */}
+        {/* ✏️ Update Entity */}
         <Route
           path="/update/:id"
           element={<UpdateEntity moments={moments} setMoments={setMoments} />}
         />
 
-        {/* 🚀 Login and Signup pages */}
+        {/* 🔐 Auth Routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+
+        {/* 📋 User Moments Dropdown Page */}
+        <Route path="/user-moments" element={<UserMomentsPage />} />
       </Routes>
     </Router>
   );

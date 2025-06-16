@@ -22,6 +22,15 @@ exports.getAllMoments = async (req, res, next) => {
   }
 };
 
+exports.getMomentsByUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const userMoments = await Moment.find({ createdBy: userId });
+    res.status(200).json({ moments: userMoments });
+  } catch (error) {
+    next(error);
+  }
+};
 exports.updateMoment = async (req, res, next) => {
   try {
     const moment = await Moment.findByIdAndUpdate(req.params.id, req.body, {
