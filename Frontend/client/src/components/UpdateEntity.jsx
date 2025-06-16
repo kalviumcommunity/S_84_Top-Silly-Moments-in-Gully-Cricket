@@ -12,27 +12,23 @@ const UpdateEntity = ({ moments, setMoments }) => {
   useEffect(() => {
     console.log("Moments in UpdateEntity:", moments);
     console.log("ID from URL:", id);
-    const momentToEdit = moments.find((moment) => moment._id === parseInt(id));
+    const momentToEdit = moments.find((moment) => moment._id === id);
     if (momentToEdit) setMomentData(momentToEdit);
   }, [id, moments]);
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     {
       console.log("Data being updated: ", momentData);
     }
     axios
-      .put(
-        `https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments/${id}`,
-        momentData
-      )
+      .put(`http://localhost:7856/api/moments/${id}`, momentData)
       .then((response) => {
         console.log("Updated Moment:", response.data);
-        
+
         setMoments((prevMoments) =>
           prevMoments.map((moment) =>
-            moment._id === parseInt(id) ? response.data : moment
+            moment._id === id ? response.data : moment
           )
         );
         navigate("/");

@@ -6,7 +6,7 @@ const AddEntity = () => {
     title: "",
     description: "",
     location: "",
-    submittedBy: "",
+    
 
   });
 
@@ -21,6 +21,7 @@ const AddEntity = () => {
     try {
       await axios.post("http://localhost:7856/api/moments", formData, {
         headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       });
       alert("Entity added successfully!");
     } catch (error) {
