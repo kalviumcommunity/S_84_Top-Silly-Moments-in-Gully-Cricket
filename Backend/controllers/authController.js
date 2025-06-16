@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
-const User = require("./models/User");
-const { findLastKey } = require("lodash");
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 exports.signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -25,17 +24,16 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    // Generating jwt after verification done
     const token = jwt.sign(
       { userId: user._id, username },
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
     );
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: findLastKey,
-      sameSite: "1ax",
-      maxAge: 60 * 60 * 1000, // 1 hour
+      sameSite: "Lax",
+      maxAge: 2 * 60 * 60 * 1000,
     });
 
     res.status(200).json({ message: "Login successful" });
