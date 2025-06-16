@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const User = require("./User");
 const MomentSchema = new mongoose.Schema({
   title: { type: String, required: true, minLength: 5 },
   location: { type: String, required: true },
@@ -7,7 +7,7 @@ const MomentSchema = new mongoose.Schema({
   submittedBy: { type: String, required: true },
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref : "User" ,
     required: true,
   },
   createdAt: { type: Date, default: Date.now },
