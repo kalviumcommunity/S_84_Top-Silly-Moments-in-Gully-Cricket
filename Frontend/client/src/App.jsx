@@ -18,13 +18,9 @@ const App = () => {
   const [moments, setMoments] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://s-84-top-silly-moments-in-gully-cricket-qh7y.onrender.com/api/moments",
-        {
-          withCredentials: true,
-        }
-      )
+    axios.get("http://localhost:7856/api/moments" , {
+      withCredentials : true ,
+    })
       .then((response) => {
         console.log("API Response Moments: ", response.data.moments);
         setMoments(response.data.moments);

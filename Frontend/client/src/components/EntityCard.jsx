@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./EntityCard.css"; 
 
 const EntityCard = ({ moment , handleDelete }) => {
+  console.log("Moment Data: ", moment);
   return (
     <div className="entity-card">
-      console.log("Moment Data: " , moment);
       <img
         src="https://via.placeholder.com/150"
         alt={`${moment.title} image`}
