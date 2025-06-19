@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const sqlRoutes = require("./routes/sql_routes");
 
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
@@ -21,6 +22,7 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/moments", momentRoutes);
+app.use("/", sqlRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Gully Cricket Moments API");
